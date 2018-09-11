@@ -84,13 +84,6 @@
         // Load scripts for each section (portfolio, counter ...)
         sectionsScripts();
 
-        /** Button Event Handler for Resume */
-        (function () {
-            $(".resume-toggle").on("click", function() {
-                window.open("./assets/custom/PDF/Andrew_Harrington_Resume.pdf", "__blank");
-            });
-        })();
-
 
         /** Ajax page load settings **/
         (function () {
@@ -126,6 +119,13 @@
 
     /** Set of sections scripts **/
     function sectionsScripts() {
+        
+         /** Button Event Handler for Resume */
+        (function () {
+            $(".resume-toggle").on("click", function() {
+                window.open("./assets/custom/PDF/Andrew_Harrington_Resume.pdf", "__blank");
+            });
+        })();
 
         /** Script for Animated Counter section **/
         (function () {
