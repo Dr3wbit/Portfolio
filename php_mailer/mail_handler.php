@@ -59,7 +59,7 @@ $options = array(
 $mail->SMTPOptions = ($options);
 $mail->From = $message['email'];
 $mail->FromName = $message['name'];   // sender's name (shows in "From" field)
-$mail->addAddress(EMAIL_USER, EMAIL_USERNAME);  // Add a recipient
+$mail->addAddress(EMAIL_TO_ADDRESS, EMAIL_USERNAME);  // Add a recipient
 //$mail->addAddress('ellen@example.com');                        // Name is optional
 $mail->addReplyTo($message['email'], $message['name']);                          // Add a reply-to address
 //$mail->addCC('cc@example.com');
@@ -68,7 +68,7 @@ $mail->addReplyTo($message['email'], $message['name']);                         
 //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
-$message['subject'] = substr($message['message'], 0, 78);  // set subject tot partial message
+$message['subject'] = substr($message['message'], 0, 78);  // set subject to partial message
 
 $currentDate = date('Y-M-D H:i:s');
 $mail->Subject = "Received message from {$_POST['name']}";
@@ -76,16 +76,14 @@ $mail->Body    = "
 <div>Name: {$_POST['name']}</div>
 <div>Email: {$_POST['email']}</div>
 <div>Subject: {$_POST['subject']}</div>
-<div>Message: {$_POST['body']}</div>
-<div>Meta Data: {$_SERVER['REMOTE_ADDR']} at {$currentDate}</div>";
+<div>Message: {$_POST['body']}</div>";
 
 
 $mail->AltBody = "
 Name: {$_POST['name']}
 Email: {$_POST['email']}
 Subject: {$_POST['subject']}
-Message: {$_POST['body']}
-Meta Data: {$_SERVER['REMOTE_ADDR']} at {$currentDate}";
+Message: {$_POST['body']}";
 
 //Attempt email send
 if(!$mail->send()) {
