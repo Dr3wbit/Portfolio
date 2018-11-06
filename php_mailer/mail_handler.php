@@ -76,14 +76,14 @@ $mail->Body    = "
 <div>Name: {$_POST['name']}</div>
 <div>Email: {$_POST['email']}</div>
 <div>Subject: {$_POST['subject']}</div>
-<div>Message: {$_POST['body']}</div>";
+<div>Message: {$_POST['message']}</div>";
 
 
 $mail->AltBody = "
 Name: {$_POST['name']}
 Email: {$_POST['email']}
 Subject: {$_POST['subject']}
-Message: {$_POST['body']}";
+Message: {$_POST['message']}";
 
 //Attempt email send
 if(!$mail->send()) {

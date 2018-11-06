@@ -305,7 +305,7 @@
                         message : formData[2].value,
 
                     })
-                    
+
                     // Submit the form using AJAX.
                     $.ajax({
                         type: 'POST',
@@ -318,7 +318,7 @@
                             $(formMessages).addClass('alert alert-success');
 
                             // Set the message text.
-                            $(formMessages).text(response);
+                            $(formMessages).text('Message Sent!');
 
                             // Clear the form.
                             $('#name').val('');
