@@ -123,7 +123,7 @@
          /** Button Event Handler for Resume */
         (function () {
             $(".resume-toggle").on("click", function() {
-                window.open("./assets/custom/PDF/Andrew_Harrington_Resume.pdf", "__blank");
+                window.open("./assets/custom/PDF/andrew_harrington_resume.pdf", "__blank");
             });
         })();
 
@@ -298,13 +298,19 @@
                     e.preventDefault();
 
                     // Serialize the form data.
-                    var formData = $(form).serialize();
+                    var formData = $(form).serializeArray()
+                    var formatedData = ({
+                        name : formData[0].value,
+                        email : formData[1].value,
+                        message : formData[2].value,
+
+                    })
 
                     // Submit the form using AJAX.
                     $.ajax({
                         type: 'POST',
                         url: $(form).attr('action'),
-                        data: formData
+                        data: formatedData
                     })
                         .done(function (response) {
                             // Make sure that the formMessages div has the 'success' class.
@@ -312,7 +318,7 @@
                             $(formMessages).addClass('alert alert-success');
 
                             // Set the message text.
-                            $(formMessages).text(response);
+                            $(formMessages).text('Message Sent!');
 
                             // Clear the form.
                             $('#name').val('');
